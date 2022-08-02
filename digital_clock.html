@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+		<title> Digital Clock </title>
+		<style>
+			@font-face {
+		font-family: 'DIGITAL';
+		src: url('https://cssdeck.com/uploads/resources/fonts/digii/DS-DIGII.TTF');
+	  }
+
+	  html {
+		height: 100%;
+		background: radial-gradient(#000, #555,white);
+	  }
+
+
+	  #myClockDisplay {
+		margin: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 40%;
+		height: 60px;
+		color: #ffffff;
+		border: 2px solid #999;
+		border-radius: 8px;
+		text-align: center;
+		font: 50px/60px 'DIGITAL', Helvetica;
+		background: linear-gradient(90deg, #000, #555);
+	  }
+		</style>
+	</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<h2 class="navbar-brand">Jawad Ahmed<h2/>
+		</div>
+	</nav>
+	<div class="col-md-3"></div>
+	<div class="col-md-6 well">
+		<h2 class="text-secondary">Simple Digital Clock</h2>
+		<hr style="border-top:1px dottec #ccc;">
+		<center>
+			<div id="myClockDisplay" >
+			</div>
+		</center>
+	</div>
+
+</body>
+<script>
+	function DisplayTime(){
+	var date = new Date();
+	var hour = date.getHours();
+	var minute = date.getMinutes();
+	var seconds = date.getSeconds();
+	var day = "AM"
+
+	if(hour == 0){
+		hour = 12;
+	}
+
+	if(hour > 12){
+		hour-=12;
+		day = "PM"
+	}
+
+	hour = (hour < 10) ? "0" + hour : hour;
+	minute = (minute < 10) ? "0" + minute : minute;
+	seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+	var currentTime = hour + ":" + minute + ":" + seconds + " " + day;
+	document.getElementById("myClockDisplay").innerText = currentTime;
+
+	setInterval(DisplayTime, 1000);
+}
+
+
+
+	DisplayTime();
+</script>
+</html>
